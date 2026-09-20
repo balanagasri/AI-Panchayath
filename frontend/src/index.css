@@ -1,0 +1,3 @@
+html { background: #f6f8f5; }
+body { margin: 0; min-width: 320px; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+#root { width: 100%; max-width: none; min-height: 100vh; margin: 0; border: 0; display: block; text-align: left; }
