@@ -58,6 +58,12 @@ For local DynamoDB or LocalStack, set `CIVICSIGNAL_DYNAMODB_ENDPOINT_URL` to the
 
 The API is available at `http://127.0.0.1:8000`. Interactive docs are at `http://127.0.0.1:8000/docs`.
 
+## AWS Integration
+
+CivicSignal uses Boto3, the AWS SDK for Python, and Amazon DynamoDB as its production persistence backend. The application retains a local in-memory fallback for local development and build/test scenarios when AWS credentials or AWS region configuration are unavailable.
+
+No AWS credentials are hard-coded in the repository. The local demo is not storing data in Amazon DynamoDB; it remains a local development fallback.
+
 ## Endpoints
 
 - `POST /api/complaints`
@@ -65,6 +71,7 @@ The API is available at `http://127.0.0.1:8000`. Interactive docs are at `http:/
 - `GET /api/issues`
 - `GET /api/issues/{issue_id}`
 - `GET /api/dashboard`
+- `GET /api/aws-status`
 - `GET /health`
 
 ## Single-table layout

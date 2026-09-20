@@ -51,6 +51,13 @@ export type Dashboard = {
   recent_reports: ComplaintSummary[]
 }
 
+export type AwsStatus = {
+  aws_sdk: string
+  production_storage: string
+  mode: 'local' | 'dynamodb'
+  aws_configured: boolean
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   let response: Response
   try {
@@ -74,4 +81,5 @@ export const api = {
   getIssues: () => request<Issue[]>('/api/issues'),
   getIssue: (issueId: string) => request<IssueDetails>(`/api/issues/${encodeURIComponent(issueId)}`),
   createComplaint: (payload: ComplaintCreate) => request<Complaint>('/api/complaints', { method: 'POST', body: JSON.stringify(payload) }),
+  getAwsStatus: () => request<AwsStatus>('/api/aws-status'),
 }

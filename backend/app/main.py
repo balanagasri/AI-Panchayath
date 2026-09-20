@@ -41,3 +41,14 @@ def startup_event() -> None:
 @app.get('/health', tags=['health'])
 def health_check() -> dict[str, str]:
     return {'status': 'ok'}
+
+
+@app.get('/api/aws-status', tags=['aws'])
+def aws_status() -> dict[str, str | bool]:
+    mode = dynamodb_store.backend_name
+    return {
+        'aws_sdk': 'Boto3',
+        'production_storage': 'Amazon DynamoDB',
+        'mode': mode,
+        'aws_configured': mode == 'dynamodb',
+    }
